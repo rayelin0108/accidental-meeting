@@ -1,0 +1,570 @@
+@mixin custom-width($width) {
+	@media (max-width: $width) {
+		@content;
+	}
+}
+
+.shopping-chkBox {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	padding: 20px 0;
+	background-color: var(--white);
+
+	@include custom-width(1200px) {
+		width: auto;
+		height: auto;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	/*流程表*/
+	#progressBar {
+		position: relative;
+		max-width: 850px;
+		margin: 20px auto;
+		margin-bottom: 30px;
+		padding: 0 15px 30px 15px;
+
+		ul {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			li {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				z-index: 10;
+
+				.no {
+					color: var(--dark);
+					background: var(--grey-D9);
+					border-radius: 50%;
+					width: 45px;
+					height: 45px;
+					font-weight: bold;
+					text-align: center;
+				}
+
+				.no2 {
+					color: var(--white);
+					background: var(--lesser-color-pink);
+					border-radius: 50%;
+					width: 45px;
+					height: 45px;
+					font-weight: bold;
+					text-align: center;
+				}
+
+				.text {
+					position: relative;
+					bottom: -13px;
+				}
+				.step-name {
+					position: absolute;
+					bottom: -25px;
+					width: 80px;
+					text-align: center;
+					font-weight: bold;
+				}
+			}
+		}
+
+		.process-line {
+			border-bottom: 1px solid var(--darkGray);
+			bottom: 17px;
+			margin: auto;
+			max-width: 95%;
+			position: relative;
+		}
+	}
+
+	//購物車列
+	.cat-quantity {
+		border-radius: 12px 12px 0 0;
+		background-color: var(--lesser-color-pink);
+		padding: 15px;
+		font-weight: bold;
+		font-size: 1rem;
+	}
+
+	/* 商品清單列 */
+	.shopping-list {
+		background-color: var(--white);
+		border-radius: 12px;
+		display: flex;
+		flex-direction: column;
+		margin: auto;
+		width: 1200px;
+		border: 1px solid var(--darkGray);
+
+		@include custom-width(1200px) {
+			width: auto;
+			height: auto;
+			margin: 0 15px;
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+	}
+
+	// 電腦版
+	#prod-table {
+		@include custom-width(1024px) {
+			display: none;
+		}
+		th {
+			text-align: left;
+			padding: 10px 10px;
+			font-size: 16px;
+			background-color: var(--grey-FC);
+			border-bottom: 1px solid var(--darkGray);
+		}
+
+		td {
+			vertical-align: middle;
+			padding: 10px 20px;
+		}
+
+		.head {
+			width: 1200px;
+			font-weight: bold;
+			&-img {
+				width: 10%;
+			}
+
+			&-title {
+				width: 15%;
+			}
+
+			&-specifications {
+				width: 20%;
+				text-align: center;
+			}
+
+			&-Makeup {
+				width: 10%;
+				text-align: center;
+			}
+
+			&-price {
+				width: 10%;
+				text-align: center;
+			}
+
+			&-quantity {
+				width: 15%;
+				text-align: center;
+			}
+
+			&-line-price {
+				width: 15%;
+				text-align: center;
+			}
+		}
+
+		.content {
+			&-img {
+				.prod-img {
+					width: 80px;
+					height: 90px;
+
+					img {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+					}
+				}
+			}
+
+			&-name {
+				text-align: left;
+			}
+
+			&-specifications {
+				text-align: center;
+			}
+
+			&-Makeup {
+				text-align: center;
+			}
+
+			&-price {
+				text-align: center;
+			}
+
+			&-Quantity {
+				text-align: center;
+			}
+
+			&-linePrice {
+				text-align: center;
+			}
+
+			&-removal {
+				text-align: center;
+
+				.remove-product {
+					background-color: var(--white);
+					border: 0;
+				}
+
+				.remove-product img:hover {
+					transform: scale(0.9);
+				}
+			}
+		}
+	}
+
+	// 數量
+	.Quantity {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	//運費
+	#prod-table {
+		.feeBox {
+			padding: 0;
+		}
+	}
+	#prod-table td {
+		.feeTitle {
+			display: flex;
+			background-color: var(--lesser-color-pink);
+			padding: 10px 20px;
+			margin: 10px 0;
+			font-weight: bold;
+		}
+		.feeText {
+			display: flex;
+			flex-direction: column;
+			line-height: 1.5;
+			padding: 10px 20px;
+
+			.logistics {
+				font-weight: bold;
+				color: var(--red);
+			}
+		}
+	}
+
+	// 合計
+	.totals2 {
+		td {
+			background-color: var(--grey-EB);
+			font-weight: bold;
+		}
+
+		.td-bg1 {
+			background-color: var(--grey-EB);
+			border-radius: 0 0 12px 12px;
+		}
+
+		.totals-div {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+		}
+
+		.totals-value2 {
+			padding: 10px 0;
+			display: flex;
+			align-items: center;
+			font-weight: bold;
+		}
+
+		.fee {
+			padding: 10px 0;
+		}
+
+		.totals-chk {
+			padding: 10px 0;
+		}
+	}
+
+	.content .content-price:before,
+	.content .content-linePrice:before {
+		content: "$";
+	}
+
+	.totals-value2:before {
+		content: "商品合計　NT$";
+		font-weight: bold;
+	}
+
+	.fee:before {
+		content: "運　　費　NT$";
+		font-weight: bold;
+	}
+
+	.totals-chk:before {
+		content: "應付金額　NT$";
+		font-weight: bold;
+		color: var(--red);
+	}
+
+	//選擇付款方式
+	.pay-list {
+		margin: 20px auto;
+		width: 1200px;
+		border: 1px solid var(--darkGray);
+		border-radius: 12px;
+
+		&-title {
+			background-color: var(--lesser-color-pink);
+			border-radius: 12px 12px 0 0;
+			padding: 15px;
+			font-weight: bold;
+			font-size: 1rem;
+		}
+
+		&-box {
+			display: flex;
+			align-items: center;
+			background-color: var(--white);
+			padding: 15px;
+			border-radius: 12px 12px;
+		}
+		@include custom-width(1200px) {
+			width: auto;
+			height: auto;
+			margin: 20px 15px;
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+	}
+
+	//填寫收件資料
+	.addressee-list {
+		margin-bottom: 20px;
+		width: 1200px;
+		border: 1px solid var(--darkGray);
+		border-radius: 12px;
+		margin: auto;
+
+		@include custom-width(1200px) {
+			width: auto;
+			height: auto;
+			margin: 0 15px;
+			margin-bottom: 40px;
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		&-title {
+			background-color: var(--lesser-color-pink);
+			border-radius: 12px 12px 0 0;
+			padding: 15px;
+			font-weight: bold;
+			font-size: 1rem;
+		}
+
+		&-box {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			padding: 15px 20px;
+			margin: 0;
+			border-radius: 0 0 12px 12px;
+
+			form.item {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				margin: 0;
+			}
+
+			.ant-form-item-control-input-content {
+				width: 600px;
+			}
+		}
+
+		// 按鈕
+		.cart-btn {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 1200px;
+			margin: auto;
+
+			@include custom-width(1200px) {
+				width: auto;
+				height: auto;
+				padding: 0;
+				margin: auto;
+			}
+
+			& button {
+				outline: none;
+				color: #000000;
+				background-color: var(--lesser-color-pink);
+				width: 200px;
+				height: 35px;
+				padding: 5px 45px;
+				margin: 20px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 14px;
+				font-weight: bold;
+				cursor: pointer;
+				border-radius: 30px;
+				border: none;
+				box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+				@include custom-width(600px) {
+					width: 120px;
+					padding: 0;
+				}
+			}
+			button:hover {
+				scale: 0.95;
+			}
+		}
+	}
+
+	//手機板
+	#prod-phone {
+		display: none;
+		@include custom-width(1024px) {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.head {
+			display: flex;
+			width: auto;
+			font-weight: bold;
+			text-align: left;
+			padding: 10px 25px;
+			font-size: 16px;
+			background-color: var(--grey-FC);
+			border-bottom: 1px solid var(--darkGray);
+			justify-content: space-between;
+
+			&-title {
+				white-space: nowrap;
+			}
+
+			&-price {
+				white-space: nowrap;
+				margin-left: 40px;
+			}
+
+			&-line-price {
+				text-align: center;
+				white-space: nowrap;
+			}
+		}
+
+		.content {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin: 20px 20px;
+
+			&-img {
+				.prod-img {
+					width: 80px;
+					height: 90px;
+
+					img {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+					}
+				}
+			}
+
+			&-name {
+				text-align: left;
+				line-height: 1.5;
+			}
+
+			&-specifications {
+				color: var(--red);
+				font-weight: bold;
+			}
+
+			&-Makeup {
+				text-align: left;
+			}
+
+			&-price {
+				text-align: left;
+			}
+
+			&-quantity {
+				text-align: center;
+			}
+
+			&-linePrice {
+				text-align: center;
+			}
+		}
+
+		//運費
+		.feeBox {
+			padding: 0;
+			display: flex;
+			flex-direction: row;
+			.feeTitle {
+				display: flex;
+				align-items: center;
+				background-color: var(--lesser-color-pink);
+				padding: 10px 20px;
+				margin: 10px 0;
+				font-weight: bold;
+			}
+			.feeText {
+				display: flex;
+				flex-direction: column;
+				line-height: 1.5;
+				padding: 10px 20px;
+
+				.logistics {
+					font-weight: bold;
+					color: var(--red);
+				}
+			}
+		}
+		// 手機板-合計
+		.totals2-phone {
+			display: flex;
+			width: 100%;
+			justify-content: end;
+			background-color: var(--grey-EB);
+			border-radius: 0 0 12px 12px;
+			padding: 20px 0;
+
+			.totals-div {
+				font-weight: bold;
+				line-height: 1.5;
+				margin-right: 20px;
+
+				@include custom-width(568px) {
+					margin-right: 50px;
+				}
+			}
+		}
+	}
+	:where(.css-dev-only-do-not-override-1qhpsh8).ant-form-item .ant-form-item-control-input-content{
+		max-width: 80%;
+		@include custom-width(450px) {
+			max-width: 60%;
+		}
+	}
+}

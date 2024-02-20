@@ -1,0 +1,442 @@
+@mixin custom-width($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+#FQ {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  /* 標題(文字amd線段) */
+  .fqaTitle1,
+  .fqaTitle3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    height: 120px;
+    background-color: var(--major-color-pink);
+  }
+
+  .fqaTitle2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    height: 120px;
+    background-color: var(--major-color-light);
+  }
+
+  .fqaLine {
+    width: 50%;
+    max-width: 317px;
+    margin: 0 auto;
+    border: none;
+    border-top: 1px solid var(--dark);
+  }
+
+  @media screen and (max-width: 800px) {
+    .fqaTitle1 h3,
+    .fqaTitle2 h3,
+    .fqaTitle3 h3 {
+      font-size: 18px !important;
+    }
+    .fqaTitle1 h5,
+    .fqaTitle2 h5,
+    .fqaTitle3 h5 {
+      font-size: 14px !important;
+    }
+  }
+
+  .fqaTitle1 h3,
+  .fqaTitle2 h3,
+  .fqaTitle3 h3 {
+    font-size: 22px;
+    margin: 10px 0;
+    font-weight: bold;
+    @include custom-width(400px) {
+      font-size: 14px;
+    }
+  }
+
+  .fqaTitle1 h5,
+  .fqaTitle2 h5,
+  .fqaTitle3 h5 {
+    font-size: 16px;
+    margin: 10px 0;
+    font-weight: bold;
+    @include custom-width(400px) {
+      font-size: 12px;
+    }
+  }
+
+  /* 大框 */
+
+  .aboutDoll {
+    height: auto;
+    max-width: 100%;
+    background-color: var(--major-color-pink);
+    position: relative;
+  }
+
+  /* 小框 */
+  .aboutDollSML {
+    // height: 100%;
+    width: 90%;
+    max-width: 1200px;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  /* 大框 */
+  .aboutorder {
+    height: auto;
+    max-width: 100%;
+    background-color: var();
+    position: relative;
+  }
+
+  /* 小框 */
+  .aboutorderSML {
+    // height: 100%;
+    width: 90%;
+    max-width: 1200px;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  /* 共通版對話框 */
+  .qa1,
+  .qa2,
+  .qa3,
+  .qa4,
+  .qa5,
+  .qa6,
+  .qa7,
+  .qa8,
+  .qa9,
+  .qa10,
+  .qa11,
+  .qa12,
+  .qa13,
+  .qa14 {
+    width: 90%;
+    min-height: 200px;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+    border-bottom: 2px solid white;
+    margin-bottom: 5vh;
+    align-items: center;
+    height: auto;
+  }
+
+  /* 對話框架共通版們 */
+  .cos {
+    width: auto;
+    width: auto;
+    max-width: 1200px;
+    max-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    // margin-bottom: 2vh;
+  }
+
+  .iconCos {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-size: cover;
+    flex-shrink: 0;
+    margin-right: 3%;
+  }
+
+  .chatCos {
+    width: 80%;
+    max-width: 1000px;
+    height: 70px;
+  }
+
+  .us {
+    width: auto;
+    height: auto;
+    max-width: 1200px;
+    max-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 2vh;
+    // padding-right: 5%;
+  }
+
+  .chatUs {
+    width: 80%;
+    max-width: 1000px;
+    height: 70px;
+    margin-right: 3px;
+  }
+
+  .iconUs {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-size: cover;
+    flex-shrink: 0;
+    margin-left: 2%;
+    // margin-right: 3%;
+  }
+
+  /* 這裡開始是對話框，小心動 */
+
+  .messages,
+  .messages2 {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    line-height: 1.1;
+    @include custom-width(800px) {
+      font-size: 14px;
+    }
+    @include custom-width(400px) {
+      font-size: 12px;
+    }
+  }
+
+  .message {
+    border-radius: 20px;
+    padding: 14px;
+    display: block;
+    margin-top: 2.5px;
+    width: 75%;
+    max-width: 1000px;
+    overflow-wrap: break-word;
+  }
+
+  .yours {
+    align-items: flex-start;
+  }
+
+  /* 這是回復對話框 */
+
+  .yours .message {
+    background-color: var(--white);
+    position: relative;
+  }
+
+  /* 這是回復對話框的尾巴 */
+
+  .yours .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: -7px;
+    height: 20px;
+    width: 20px;
+    background: var(--white);
+    border-bottom-right-radius: 15px;
+  }
+
+  .yours .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: -10px;
+    width: 10px;
+    height: 20px;
+    background: var(--major-color-pink);
+    border-bottom-right-radius: 10px;
+  }
+
+  .mine {
+    align-items: flex-end;
+  }
+
+  /* 這是回復對話框 */
+  .mine .message {
+    background-color: var(--lesser-color-beige);
+    position: relative;
+  }
+
+  /* 這是回復對話框的尾巴 */
+  .mine .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: -8px;
+    height: 20px;
+    width: 20px;
+    background: var(--lesser-color-beige);
+    border-bottom-left-radius: 15px;
+  }
+
+  .mine .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: -10px;
+    width: 10px;
+    height: 20px;
+    background: var(--major-color-pink);
+    border-bottom-left-radius: 10px;
+  }
+
+  /* 小心動*/
+
+  .yours .message.last2:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: -7px;
+    height: 20px;
+    width: 20px;
+    background: var(--white);
+    border-bottom-right-radius: 15px;
+  }
+
+  //   是下方的線
+  .yours .message.last2:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: -10px;
+    width: 10px;
+    height: 20px;
+    background: var(--major-color-light);
+    border-bottom-right-radius: 10px;
+  }
+
+  .mine .message.last2:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: -8px;
+    height: 20px;
+    width: 20px;
+    background: var(--lesser-color-beige);
+    background-attachment: fixed;
+    border-bottom-left-radius: 15px;
+  }
+
+  .mine .message.last2:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: -10px;
+    width: 10px;
+    height: 20px;
+    background: var(--major-color-light);
+    border-bottom-left-radius: 10px;
+  }
+
+  /* 聯繫我們-------------------------------------------------------------------------- */
+  .contactUS {
+    height: auto;
+    background-color: var(--major-color-pink);
+  }
+
+  .QAillustrate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @include custom-width(450px) {
+      width: 90%; 
+      margin: auto;
+    }
+  }
+
+  .QAillustrate-text {
+    padding: 20px;
+    background-color: var(--white);
+    width: 90%;
+    max-width: 1200px;
+    gap: 10px;
+    border-radius: 24px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin: 60px auto;
+
+    p {
+      line-height: 1.5;
+      font-size: 16px;
+      @include custom-width(800px) {
+        font-size: 14px;
+      }
+      @include custom-width(400px) {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .contactUS-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    height: auto;
+    background-color: var(--major-color-pink);
+
+    .contactUS-h4 {
+      align-items: flex-start;
+      width: 100%;
+      padding: 20px;
+      background-color: var(--lesser-color-yellow);
+      border-radius: 24px 24px 0 0;
+      font-weight: bold;
+    }
+
+    #message {
+      padding: 10px 0 0 10px;
+    }
+
+    .QAfrom {
+      width: 100%;
+      background-color: var(--white);
+      padding: 20px;
+      border-radius: 0 0 24px 24px;
+      margin-bottom: 60px;
+    }
+    P {
+      font-size: 14px;
+      color: var(--darkGray);
+    }
+  }
+
+  .QA_btn {
+    input {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      width: 200px;
+      height: 35px;
+      border-radius: 12px;
+      background: var(--lesser-color-yellow);
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      border: none;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    &:hover {
+      scale: 0.95;
+    }
+  }
+}

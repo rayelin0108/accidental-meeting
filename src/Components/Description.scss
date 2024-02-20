@@ -1,0 +1,41 @@
+@mixin custom-width($width) {
+    @media (max-width: $width) {
+      @content;
+    }
+}
+#wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--major-color-brown);
+    width: 100%;
+    @include custom-width(500px){
+     display: none;
+    }
+}
+.pageDescription {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 15px auto;
+}
+.topTitleText {
+    position: absolute;
+    bottom: 54px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+#topTitleText .title {
+    color: var(--major-color-brown);
+}
+
+.pageDescription img {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+}

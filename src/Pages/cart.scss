@@ -1,0 +1,454 @@
+@mixin custom-width($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+.shopping-cartBox {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 20px 0;
+  background-color: var(--white);
+
+  @include custom-width(1200px) {
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /*流程表*/
+  #progressBar {
+    position: relative;
+    max-width: 850px;
+    margin: 20px auto;
+    margin-bottom: 30px;
+    padding: 0 15px 30px 15px;
+
+    ul {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      li {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+
+        .no {
+          color: var(--dark);
+          background: var(--grey-D9);
+          border-radius: 50%;
+          width: 45px;
+          height: 45px;
+          font-weight: bold;
+          text-align: center;
+        }
+
+        .no1 {
+          color: var(--white);
+          background: var(--lesser-color-pink);
+          border-radius: 50%;
+          width: 45px;
+          height: 45px;
+          font-weight: bold;
+          text-align: center;
+        }
+
+        .text {
+          position: relative;
+          bottom: -13px;
+        }
+        .step-name {
+          position: absolute;
+          bottom: -25px;
+          width: 80px;
+          text-align: center;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .process-line {
+      border-bottom: 1px solid var(--darkGray);
+      bottom: 17px;
+      margin: auto;
+      max-width: 95%;
+      position: relative;
+    }
+  }
+
+  //購物車列
+  .cat-quantity {
+    border-radius: 12px 12px 0 0;
+    background-color: var(--lesser-color-pink);
+    padding: 15px;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  /* 商品清單列 */
+  .shopping-list {
+    background-color: var(--white);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 1200px;
+    border: 1px solid #8a8a8a;
+
+    @include custom-width(1200px) {
+      width: auto;
+      height: auto;
+      margin: 0 15px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  //電腦版
+  #prod-table {
+    @include custom-width(1024px) {
+      display: none;
+    }
+    th {
+      text-align: left;
+      padding: 10px 10px;
+      font-size: 16px;
+      background-color: var(--grey-FC);
+      border-bottom: 1px solid var(--darkGray);
+    }
+
+    td {
+      vertical-align: middle;
+      padding: 10px 20px;
+    }
+
+    .head {
+      width: 1200px;
+      font-weight: bold;
+      &-img {
+        width: 10%;
+      }
+
+      &-title {
+        width: 15%;
+      }
+
+      &-specifications {
+        width: 20%;
+        text-align: center;
+        white-space: pre-wrap;
+      }
+
+      &-Makeup {
+        width: 10%;
+        text-align: center;
+      }
+
+      &-price {
+        width: 10%;
+        text-align: center;
+      }
+
+      &-quantity {
+        width: 15%;
+        text-align: center;
+      }
+
+      &-line-price {
+        width: 15%;
+        text-align: center;
+      }
+    }
+
+    .content {
+      &-img {
+        .prod-img {
+          width: 80px;
+          height: 90px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+
+      &-name {
+        text-align: left;
+      }
+
+      &-specifications {
+        text-align: center;
+      }
+
+      &-Makeup {
+        text-align: center;
+      }
+
+      &-price {
+        text-align: center;
+      }
+
+      &-productQuantity {
+        text-align: center;
+      }
+
+      &-linePrice {
+        text-align: center;
+      }
+
+      &-removal {
+        text-align: center;
+
+        .remove-product {
+          background-color: var(--white);
+          border: 0;
+          cursor: pointer;
+        }
+
+        .remove-product img:hover {
+          transform: scale(0.9);
+        }
+      }
+    }
+  }
+
+  // 加減
+  .productQuantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #a0a0a0;
+    border-radius: 20px;
+    height: 25px;
+    width: 130px;
+
+    @include custom-width(1024px) {
+      width: 80px;
+    }
+
+    input {
+      width: 30px;
+      border: 0;
+      text-align: right;
+      outline: none; /* 不顯示點選時的邊框 */
+    }
+
+    button {
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+    }
+  }
+
+  // 合計
+  .totals {
+    td {
+      background-color: var(--grey-EB);
+      font-weight: bold;
+    }
+
+    .td-bg1 {
+      background-color: var(--grey-EB);
+      border-radius: 0 0 0 12px;
+    }
+
+    .td-bg2 {
+      background-color: var(--grey-EB);
+      border-radius: 0 0 12px 0;
+    }
+
+    .totals-value {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+  }
+
+  .content .content-price:before,
+  .content .content-linePrice:before {
+    content: "$";
+  }
+
+  .totals-value:before {
+    content: "NT$";
+    font-weight: bold;
+  }
+
+  // 繼續購買按鈕
+  .cart-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    & button {
+      outline: none;
+      color: #000000;
+      background-color: var(--lesser-color-pink);
+      width: 200px;
+      height: 35px;
+      padding: 5px 45px;
+      margin: 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 30px;
+      border: none;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      @include custom-width(600px) {
+        width: 120px;
+        padding: 0;
+      }
+    }
+    button:hover {
+      scale: 0.95;
+    }
+  }
+
+  //手機板
+  #prod-phone {
+    display: none;
+    @include custom-width(1024px) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .head {
+      display: flex;
+      align-items: center;
+      width: auto;
+      font-weight: bold;
+      padding: 10px 10px;
+      font-size: 16px;
+      background-color: var(--grey-FC);
+      border-bottom: 1px solid var(--darkGray);
+      justify-content: space-between;
+
+      &-title {
+        white-space: nowrap;
+      }
+
+      // &-Makeup {
+      // 	text-align: center;
+      // 	white-space: nowrap;
+      // }
+
+      &-price {
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      &-quantity {
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      &-line-price {
+        text-align: center;
+        white-space: nowrap;
+      }
+    }
+
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 20px 10px;
+
+      @include custom-width(440px) {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      &-img {
+        @include custom-width(440px) {
+          display: none;
+        }
+        .prod-img {
+          width: 80px;
+          height: 90px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+
+      &-name {
+        text-align: left;
+        line-height: 1.5;
+      }
+
+      &-specifications {
+        color: var(--red);
+        font-weight: bold;
+      }
+
+      &-Makeup {
+        text-align: left;
+      }
+
+      &-price {
+        text-align: center;
+      }
+
+      &-linePrice {
+        text-align: center;
+      }
+
+      &-removal {
+        text-align: center;
+
+        .remove-product {
+          background-color: var(--white);
+          border: 0;
+          cursor: pointer;
+        }
+
+        img:hover {
+          transform: scale(0.9);
+        }
+      }
+    }
+    .totals-phone {
+      display: flex;
+      width: 100%;
+      justify-content: end;
+      background-color: var(--grey-EB);
+      border-radius: 0 0 12px 12px;
+      padding: 20px 0;
+
+      .totals-text {
+        font-weight: bold;
+        margin-right: 20px;
+      }
+
+      #cart-total {
+        font-weight: bold;
+        margin-right: 80px;
+        @include custom-width(568px) {
+          margin-right: 50px;
+        }
+      }
+    }
+  }
+}

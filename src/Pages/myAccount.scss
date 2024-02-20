@@ -1,0 +1,402 @@
+@mixin custom-width($width) {
+    @media (max-width: $width) {
+        @content;
+    }
+}
+
+.accountBox {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    background-color: var(--major-color-light);
+    max-width: 1200px;
+
+    @include custom-width(1024px) {
+        flex-direction: column;
+        height: auto;
+        width: auto;
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .account-box1 {
+        @include custom-width(1024px) {
+            display: none;
+        }
+
+        position: relative;
+        display: block;
+        align-items: stretch;
+        width: 200px;
+        height: 550px;
+        margin: 20px;
+        flex-shrink: 0;
+        border-radius: 24px;
+        background: var(--white);
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+        //大頭貼
+        &-photo {
+            display: flex;
+            justify-content: center;
+            margin-top: 16px;
+
+            .ant-upload-picture-circle-wrapper {
+                display: flex;
+                justify-content: center;
+            }
+
+            img {
+                height: 100%;
+                border-radius: 50%;
+                stroke-width: 1px;
+                background-color: var(--white);
+                box-shadow: 0px 1px 2.9px rgba(0, 0, 0, 0.25);
+                object-fit: contain;
+            }
+        }
+
+        &-list_bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+                text-decoration: none;
+                color: inherit; /* 使用父元素的文字顏色，這樣點選後不會有顏色變化 */
+                font-size: 1rem;
+                font-weight: bold;
+            }
+
+            .orders_btn,
+            .collection_btn,
+            .account_btn,
+            .logOut_btn {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                position: relative;
+                width: 180px;
+                height: 50px;
+                margin-bottom: 25px;
+                cursor: pointer;
+            }
+
+            // 非本頁按鈕hover
+            .logOut_btn:hover,
+            .orders_btn:hover,
+            .collection_btn:hover {
+                background-color: var(--lesser-color-pink);
+                border-radius: 16px;
+                color: var(--white);
+                text-shadow: 0px 1px 1.5px rgba(0, 0, 0, 0.3);
+            }
+
+            //登出按鈕
+            .logOut_btn {
+                position: absolute;
+                bottom: 0;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 180px;
+
+                &::before {
+                    content: ""; /* 偽元素用於顯示圖示 */
+                    background-image: url("../assets/icon/logOut-b.svg");
+                    background-repeat: no-repeat;
+                    background-size: 32px; /* 調整圖示大小 */
+                    width: 32px;
+                    height: 32px;
+                    position: absolute;
+                    left: 0;
+                    top: 50%; /* 圖示垂直置中 */
+                    transform: translateY(-50%) translateX(50%);
+                }
+
+                &:hover::before {
+                    content: ""; /* 偽元素用於顯示圖示 */
+                    background-image: url("../assets/icon/logOut-w.svg");
+                    background-repeat: no-repeat;
+                    background-size: 32px; /* 調整圖示大小 */
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+
+            // 購買清單按鈕
+            .orders_btn {
+                &::before {
+                    content: ""; /* 偽元素用於顯示圖示 */
+                    background-image: url("../assets/icon/icon-cart-b.svg");
+                    background-repeat: no-repeat;
+                    background-size: 28px; /* 調整圖示大小 */
+                    width: 28px;
+                    height: 28px;
+                    position: absolute;
+                    left: 0;
+                    top: 50%; /* 圖示垂直置中 */
+                    transform: translateY(-50%) translateX(50%);
+
+                    @include custom-width(650px) {
+                        display: none;
+                    }
+                }
+            }
+
+            .orders_btn:hover::before {
+                content: ""; /* 偽元素用於顯示圖示 */
+                background-image: url("../assets/icon/icon-cart-w.svg");
+                background-repeat: no-repeat;
+                background-size: 28px; /* 調整圖示大小 */
+                width: 28px;
+                height: 28px;
+            }
+
+            // 追蹤清單按鈕
+            .collection_btn {
+                &::before {
+                    content: ""; /* 偽元素用於顯示圖示 */
+                    background-image: url("../assets/icon/icon-my-collection-b.svg");
+                    background-repeat: no-repeat;
+                    background-size: 28px; /* 調整圖示大小 */
+                    width: 28px;
+                    height: 28px;
+                    position: absolute;
+                    left: 0;
+                    top: 50%; /* 圖示垂直置中 */
+                    transform: translateY(-50%) translateX(50%);
+
+                    @include custom-width(650px) {
+                        display: none;
+                    }
+                }
+            }
+            .collection_btn:hover::before {
+                content: ""; /* 偽元素用於顯示圖示 */
+                background-image: url("../assets/icon/icon-my-collection-w.svg");
+                background-repeat: no-repeat;
+                background-size: 28px; /* 調整圖示大小 */
+                width: 28px;
+                height: 28px;
+            }
+
+            //會員資料按鈕(本頁按鈕顯示)
+            .account_btn {
+                width: 180px;
+                height: 50px;
+                background-color: var(--lesser-color-pink);
+                border-radius: 16px;
+                color: var(--white);
+                text-shadow: 0px 1px 1.5px rgba(0, 0, 0, 0.3);
+
+                &:hover {
+                    background-color: var(--lesser-color-brown);
+                }
+
+                &::before {
+                    content: ""; /* 偽元素用於顯示圖示 */
+                    background-image: url("../assets/icon/icon-my-account-w.svg");
+                    background-repeat: no-repeat;
+                    background-size: 28px; /* 調整圖示大小 */
+                    width: 28px;
+                    height: 28px;
+                    position: absolute;
+                    left: 0;
+                    top: 50%; /* 圖示垂直置中 */
+                    transform: translateY(-50%) translateX(50%);
+
+                    @include custom-width(650px) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    // 右側會員資料區
+    .account-box2 {
+        float: right;
+        display: block;
+        width: 1000px;
+        height: auto;
+        margin: 20px 0;
+        border-radius: 24px;
+        background: var(--white);
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+        @include custom-width(1024px) {
+            width: auto;
+            height: auto;
+            padding: 0;
+            margin: 20px;
+        }
+
+        .member_title {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 1000px;
+            height: 50px;
+            border-radius: 24px 24px 0px 0px;
+            background: var(--lesser-color-pink);
+
+            @include custom-width(1200px) {
+                width: auto;
+            }
+
+            h3 {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                width: 980px;
+                height: 50px;
+                padding: 0px 10px 0px 20px;
+                flex-shrink: 0;
+                text-align: center;
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+
+        .member_list {
+            display: flex;
+            height: auto;
+            flex-direction: column;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: bold;
+            margin: 15px 0;
+
+            @include custom-width(1200px) {
+                width: auto;
+            }
+
+            :where(.css-dev-only-do-not-override-1qhpsh8).ant-input {
+                width: auto;
+            }
+
+            .member_form {
+                margin: 0 30px;
+
+                .address {
+                    .addText {
+                        margin-left: 10px;
+                        color: #a5a5a5;
+
+                        @include custom-width(1200px) {
+                            display: flex;
+                            flex-direction: column;
+                            margin-left: 0;
+                        }
+                    }
+                }
+
+                .btn {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    margin: auto;
+
+                    button {
+                        margin: auto;
+                        display: inline-block;
+                        text-decoration: none;
+                        outline: none;
+                        background-color: var(--lesser-color-pink);
+                        color: var(--dark);
+                        width: 200px;
+                        height: 35px;
+                        padding: 5px 45px;
+                        margin: 20px;
+                        text-align: center;
+                        font-size: 14px;
+                        font-weight: bold;
+                        cursor: pointer;
+                        border-radius: 30px;
+                        border: none;
+                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+                        &:hover {
+                            scale: 0.95;
+                        }
+
+                        &:active {
+                            transform: scale(1.05);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 手機板頁面切換選單
+    .account-box1-phone {
+        display: none;
+
+        @include custom-width(1024px) {
+            display: flex;
+            flex-direction: column;
+        }
+
+        // 大頭貼&登出
+        .account-box1-photo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            width: auto;
+
+            .logOut_btn {
+                color: inherit;
+                font-size: 1rem;
+                font-weight: bold;
+                cursor: pointer;
+
+                &:hover {
+                    color: var(--lesser-color-brown);
+                }
+            }
+        }
+
+        // 選單
+        .account-box1-list_bar {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background: var(--white);
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            width: auto;
+            height: auto;
+            margin: 0 20px;
+            border-radius: 50px;
+
+            .orders_btn,
+            .collection_btn,
+            .account_btn {
+                margin-bottom: 0;
+                margin: 10px;
+                @include custom-width(650px) {
+                    width: 100px;
+                    margin: 6px;
+                    border-radius: 50px;
+                  }
+                @include custom-width(450px) {
+                    width: 86px;
+                    margin: 6px;
+                    border-radius: 50px;
+                  }
+            }
+        }
+    }
+}

@@ -1,0 +1,820 @@
+@mixin custom-width($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+$variable1: 200px;
+
+#home {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .homeTitle {
+    margin: auto;
+    p {
+      @include custom-width(1200px) {
+        display: none;
+      }
+    }
+    h3 {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 30px;
+      @include custom-width(1000px) {
+        font-size: 26px;
+      }
+      @include custom-width(600px) {
+        font-size: 22px;
+      }
+    }
+
+    h4 {
+      font-weight: 600;
+      font-size: 18px;
+      @include custom-width(1000px) {
+        font-size: 16px;
+      }
+      @include custom-width(600px) {
+        font-size: 14px;
+      }
+    }
+
+    hr {
+      border: 1px solid #000;
+      display: flex;
+      align-items: center;
+      max-width: 600px;
+      width: auto;
+      @include custom-width(1000px) {
+        max-width: 400px;
+      }
+      @include custom-width(600px) {
+        max-width: 200px;
+      }
+    }
+  }
+
+  h3,
+  h4,
+  p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    line-height: 1.5;
+  }
+
+  // 按鈕
+  .viewMore-btn {
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--lesser-color-yellow);
+    color: var(--lesser-color-brown);
+    width: 150px;
+    height: 60px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+
+    @include custom-width(900px) {
+      width: 150px;
+      height: 40px;
+    }
+    @include custom-width(400px) {
+      width: 120px;
+      height: 34px;
+      font-size: 14px;
+    }
+    a {
+      text-decoration: none; // 去除超連結線
+    }
+
+    &:hover {
+      transform: scale(0.95);
+    }
+  }
+
+  // 翻牌效果
+  .flip-card-container {
+    display: flex;
+    perspective: 1000px;
+
+    &:hover .flip-card,
+    &:focus-within .flip-card {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card {
+      width: inherit;
+      height: inherit;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: 0.6s 0.1s;
+    }
+
+    figure,
+    .img-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      object-fit: cover;
+    }
+  }
+
+  .card-front {
+    transform: rotateY(0deg);
+    z-index: 2;
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
+
+  /* 卡片背面button */
+  .card-back-btn {
+    button {
+      font-family: inherit;
+      font-weight: bold;
+      color: var(--major-color-brown);
+      letter-spacing: 2px;
+      padding: 9px 20px;
+      border: 3px solid var(--lesser-color-yellow);
+      background-color: var(--lesser-color-yellow);
+      border-radius: 1000px;
+      transition: 0.3s;
+      cursor: pointer;
+      position: absolute;
+      left: 40px;
+      bottom: 35px;
+
+      &:hover,
+      &:focus {
+        color: var(--lesser-color-yellow);
+        background: hsla(var(--hue), 25%, 10%, 0.2);
+        border-color: currentColor;
+      }
+    }
+  }
+
+  /* 關於我們 */
+  .about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--major-color-brown);
+    height: 225px;
+    width: 100%;
+    margin: auto;
+    flex-shrink: 0; /* 這個項目不會在空間不足時收縮 */
+    white-space: nowrap; /* 防止文字換行 */
+    background-repeat: no-repeat;
+    background-position: center;
+    @include custom-width(500px) {
+      display: none;
+    }
+    img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+
+      @include custom-width(1024px) {
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    h4 {
+      position: absolute;
+      top: 260px;
+      color: var(--major-color-pink);
+      text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
+      font-size: 1.7rem;
+      font-weight: bold;
+
+      @include custom-width(768px) {
+        position: absolute;
+        top: 250px;
+      }
+    }
+
+    p {
+      position: relative;
+      top: 18%;
+      right: 0%;
+      color: var(--major-color-brown);
+      line-height: 1.5;
+    }
+  }
+
+  //banner輪播
+  #test-swiper {
+    margin: auto;
+    max-width: 1200px;
+    height: auto;
+    margin-bottom: 100px;
+
+    @include custom-width(1024px) {
+      height: auto;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+
+      .swiper-slide {
+        img {
+          max-width: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+
+    .banner-img {
+      width: 100%;
+      background-size: cover;
+    }
+  }
+
+  // 人偶
+  #dollsBox {
+    margin: auto;
+    width: 100%;
+
+    @include custom-width(1024px) {
+      height: auto;
+      max-width: auto;
+      margin: 0;
+      padding: 0;
+      margin-top: 60px;
+    }
+
+    // 人偶手機板
+    .dollsContent-imgPhone {
+      display: none;
+      @include custom-width(900px) {
+        display: block;
+        height: auto;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 100px;
+        margin-top: 10px;
+        .item_1phone,
+        .item_2phone,
+        .item_3phone {
+          display: flex;
+          flex-direction: column;
+          width: auto;
+          margin: 3%;
+          align-items: center;
+          height: 260px;
+          @include custom-width(600px) {
+            height: 180px;
+          }
+          @include custom-width(450px) {
+            height: 160px;
+          }
+          img {
+            border: 6px solid white;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 100px;
+            @include custom-width(600px) {
+              border-radius: 40px;
+              border: 4px solid white;
+            }
+            @include custom-width(450px) {
+              border-radius: 50px;
+              border: 3px solid white;
+            }
+          }
+        }
+      }
+    }
+    .dollsContent {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      width: 1200px;
+      border-radius: 40px;
+      background-color: var(--major-color-brown);
+      margin-top: 40px;
+
+      @include custom-width(1200px) {
+        height: auto;
+        width: 90%;
+        margin: auto;
+        margin-top: 40px;
+      }
+      @include custom-width(900px) {
+        height: 90%;
+        margin-top: 10px;
+      }
+
+      // 翻牌效果的卡片大框
+
+      &-img {
+        display: inline-flex;
+        align-items: flex-start;
+        margin: 80px auto;
+        gap: 30px;
+        width: 100%;
+        height: 100%;
+        margin-left: 30px;
+
+        @include custom-width(900px) {
+          display: none;
+        }
+
+        @include custom-width(1200px) {
+          height: auto;
+          width: auto;
+          margin: 80px;
+          margin-left: 55px;
+        }
+      }
+    }
+
+    .dollsText {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      color: var(--white);
+      text-align: 1.5;
+      margin: 0 40px;
+
+      @include custom-width(1200px) {
+        display: none;
+      }
+
+      hr {
+        width: 240px;
+        color: var(--white);
+        margin: 20px 0;
+      }
+
+      h4 {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      p {
+        word-wrap: break-word;
+        line-height: 1.7;
+      }
+    }
+
+    .viewMore-btn {
+      display: flex;
+      align-items: center;
+      position: relative;
+      bottom: 80px;
+      @include custom-width(400px) {
+        bottom: 70px;
+      }
+    }
+
+    // 人偶翻牌效果
+    .flip-card-container {
+      display: flex;
+      width: 210px;
+      height: 439px;
+      margin: 15px;
+      perspective: 1000px;
+    }
+
+    .card-front,
+    .card-back {
+      width: 210px;
+      height: 405px;
+      border: 10px solid #fff;
+      border-radius: 250px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      object-fit: cover;
+      backface-visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  // 裝扮
+  .dressUpContent-imgPhone {
+    display: none;
+    @include custom-width(900px) {
+      display: block;
+      height: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+
+      .dress_1phone,
+      .dress_2phone {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        width: auto;
+        margin: 6%;
+        align-items: center;
+        height: 360px;
+        width: 340px;
+        @include custom-width(700px) {
+          height: 340px;
+          width: 320px;
+        }
+        @include custom-width(600px) {
+          height: 220px;
+          width: 220px;
+          margin: 4%;
+        }
+        @include custom-width(450px) {
+          height: 180px;
+          width: 160px;
+          margin-top: 40px;
+        }
+        img {
+          border: 6px solid white;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 30px;
+          @include custom-width(900px) {
+            border-radius: 20px;
+            border: 4px solid white;
+          }
+          @include custom-width(400px) {
+            border-radius: 20px;
+            border: 3px solid white;
+          }
+        }
+      }
+    }
+  }
+  #dressUpBox {
+    background-color: var(--major-color-pink);
+    height: auto;
+    width: 100%;
+    position: relative;
+    padding-bottom: 180px;
+
+    hr {
+      border: 1px solid #000;
+    }
+
+    // 電腦版服裝
+    .dressUpContent {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1200px;
+      height: 600px;
+      margin: auto;
+
+      @include custom-width(1024px) {
+        height: auto;
+        width: auto;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        @include custom-width(900px) {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+
+      .dressUp-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+
+        @include custom-width(900px) {
+          display: none;
+        }
+      }
+    }
+
+    .dressUPText {
+      position: relative;
+      @include custom-width(1200px) {
+        display: none;
+      }
+
+      &-p {
+        position: absolute;
+        bottom: 185px;
+        left: 155px;
+
+        hr {
+          border: 1px solid #000;
+        }
+      }
+      .window-img {
+        display: flex;
+        width: 600px;
+        // @include custom-width(1200px) {
+        //   width: 500px;
+        // }
+      }
+    }
+
+    .home-dreesUp-btn {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 100px;
+      left: 50%;
+      right: 50%;
+      @include custom-width(900px) {
+        margin-top: 40px;
+      }
+
+      .dreesUp-img {
+        width: 550px;
+
+        @include custom-width(600px) {
+          display: none;
+        }
+      }
+
+      .left-img {
+        position: relative;
+        left: -30px;
+      }
+
+      .right-img {
+        position: relative;
+        right: -30px;
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    // 裝扮翻牌效果
+    .flip-card-container {
+      display: flex;
+      width: 300px;
+      height: 439px;
+      margin: 0 8px;
+      perspective: 1000px;
+
+      .card-front,
+      .card-back {
+        width: 300px;
+        height: 410px;
+        border: 10px solid #fff;
+        border-radius: 40px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        object-fit: cover;
+        backface-visibility: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* 背面button定位 */
+      .card-back-btn {
+        button {
+          position: absolute;
+          left: 85px;
+          bottom: 15px;
+        }
+      }
+    }
+  }
+
+  .makeup-Phone-text {
+    display: none;
+    @include custom-width(900px) {
+      display: flex;
+      justify-content: center;
+
+      margin-bottom: 20px;
+      p {
+        font-size: 14px;
+        text-align: center;
+        @include custom-width(500px) {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  //妝面
+  .makeup-Phone {
+    display: none;
+    width: 90%;
+    @include custom-width(900px) {
+      display: block;
+      height: auto;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+
+      .makeup_1phone,
+      .makeup_2phone,
+      .makeup_3phone {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        margin: 3%;
+        align-items: center;
+        height: 22vh;
+        margin-bottom: 20px;
+        @include custom-width(700px) {
+          height: 18vh;
+        }
+        @include custom-width(600px) {
+          height: 16vh;
+        }
+        @include custom-width(500px) {
+          height: 13vh;
+        }
+        img {
+          width: auto;
+          height: 100%;
+        }
+      }
+    }
+  }
+  #mackUpBox {
+    background-color: var(--major-color-brown);
+    color: var(--white);
+    width: 100%;
+    height: auto;
+    margin-bottom: 40px;
+
+    .homeTitle {
+      hr {
+        border: 1px solid #fff;
+      }
+    }
+
+    .mackUpText {
+      h3 {
+        margin-top: 50px;
+        @include custom-width(900px) {
+          display: none;
+        }
+      }
+      p {
+        font-size: 16px;
+        @include custom-width(900px) {
+          display: none;
+        }
+      }
+
+      a {
+        color: var(--lesser-color-yellow);
+
+        &:visited {
+          color: var(--lesser-color-pink);
+        }
+      }
+    }
+
+    .mackUp-hp {
+      width: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      color: var(--white);
+      padding-top: 80px;
+      margin-bottom: 100px;
+      @include custom-width(900px) {
+        display: none;
+      }
+
+      @include custom-width(1024px) {
+        width: auto;
+      }
+
+      .mackUp-item {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        align-items: flex-start;
+        position: relative;
+
+        img {
+          margin: auto;
+          width: 80%;
+
+          @include custom-width(768px) {
+            margin-top: 60px;
+          }
+        }
+
+        h5 {
+          font-size: 1.2rem;
+          font-weight: bold;
+          position: absolute;
+          left: 100px;
+          bottom: 40px;
+
+          @include custom-width(1024px) {
+            position: absolute;
+            left: 50px;
+          }
+
+          @include custom-width(568px) {
+            position: absolute;
+            left: 50px;
+          }
+        }
+
+        p {
+          line-height: 1.5;
+          position: absolute;
+          bottom: -40px;
+          margin: auto;
+        }
+      }
+    }
+  }
+
+  //過往熱門商品
+  #pastItems {
+    width: 100%;
+
+    .hot-Swiper {
+      margin: 48px auto;
+      margin-bottom: 50px;
+      max-width: 1600px;
+      height: 550px;
+
+      @include custom-width(1024px) {
+        height: auto;
+      }
+
+      .swiper-container {
+        width: 100%;
+        max-width: 1200px;
+      }
+
+      .swiper-slide {
+        width: 300px;
+        padding: 0 15px;
+      }
+
+      .swiperBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        object-fit: cover;
+        background-repeat: no-repeat;
+        border-radius: 20px;
+        border: 10px solid var(--major-color-brown);
+      }
+
+      .banner-text {
+        display: flex;
+        justify-content: center;
+        margin: 12px 0;
+        font-weight: bold;
+        font-size: 18px;
+        color: var(--lesser-color-brown);
+      }
+    }
+  }
+}

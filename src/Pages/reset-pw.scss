@@ -1,0 +1,200 @@
+@mixin custom-width($width) {
+    @media (max-width: $width) {
+        @content;
+    }
+}
+
+#reset_pw {
+    margin: 80px 0;
+    height: 100%;
+
+    .reset_pwBox {
+        display: flex;
+        align-items: stretch;
+        margin: auto;
+        background-color: var(--white);
+        border-radius: 28px;
+        width: 1200px;
+
+        & .pwBox {
+            margin: 60px 0;
+        }
+
+        & .member_reset_pw {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+
+            form {
+                width: 600px;
+                font-weight: 600;
+            }
+
+            label {
+                font-size: 16px;
+            }
+
+            @media screen and (max-width: 568px) {
+                margin: 0;
+                form {
+                    width: auto;
+                    margin-left: auto;
+                }
+            }
+        }
+
+        h3 {
+            font-size: 2rem;
+            color: var(--darkGray);
+            text-align: center;
+            width: auto;
+        }
+
+        @media screen and (max-width: 1200px) {
+            h3 {
+                font-size: 1.8rem;
+                margin: auto;
+            }
+
+            form {
+                width: 600px;
+            }
+
+            .login-btn {
+                button {
+                    width: 150px;
+                }
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            flex-direction: column;
+            height: auto;
+            width: auto;
+            padding: 0; // 清除左右內邊距
+            justify-content: center; // 在小螢幕下水平居中
+            margin: 80px auto;
+
+            h3 {
+                font-size: 1.8rem;
+                margin: auto;
+            }
+
+            form {
+                width: 400px;
+            }
+
+            .login-btn {
+                button {
+                    width: 150px;
+                }
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            height: auto;
+            width: auto;
+            padding: 0; // 清除左右內邊距
+            justify-content: center; // 在小螢幕下水平居中
+            margin: 80px auto;
+
+            h3 {
+                font-size: 1.5rem;
+                margin: auto;
+            }
+
+            .login-btn {
+                button {
+                    width: 150px;
+                }
+            }
+        }
+    }
+
+    .register-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 60px;
+        margin-left: -65px;
+
+        button {
+            outline: none;
+            color: var(dark);
+            background-color: var(--lesser-color-pink);
+            width: 200px;
+            height: 35px;
+            padding: 5px 45px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 30px;
+            border: none;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        }
+        button:hover {
+            scale: 0.95;
+        }
+    }
+
+    //左側欄位
+
+    .reset_pwBox .loginImg {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        background-color: var(--major-color-pink);
+        border-radius: 28px;
+        width: 422px;
+        height: 754px;
+
+        @media screen and (max-width: 1024px) {
+            flex-direction: column;
+            height: auto;
+            width: auto;
+            margin: 0; // 清除左右邊距
+            padding: 0; // 清除左右內邊距
+            justify-content: center; // 在小螢幕下水平居中
+            margin-bottom: 40px;
+            border-radius: 28px 28px 0 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            height: auto;
+            width: auto;
+            margin: 0; // 清除左右邊距
+            padding: 0; // 清除左右內邊距
+            justify-content: center; // 在小螢幕下水平居中
+            margin-bottom: 40px;
+            border-radius: 28px 28px 0 0;
+        }
+
+        img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            width: 185px;
+            height: 185px;
+
+            @media screen and (max-width: 1024px) {
+                width: 120px;
+                height: 120px;
+                margin: 10px auto;
+            }
+
+            @media screen and (max-width: 768px) {
+                width: 100px;
+                height: 100px;
+                margin: 10px auto;
+            }
+        }
+    }
+}

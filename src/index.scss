@@ -1,0 +1,251 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600&family=Roboto:wght@400;500;700&display=swap");
+
+/* Reset CSS */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font-weight: normal;
+	font: inherit;
+	vertical-align: baseline;
+	font-family:
+		/*西文*/
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		Roboto,
+		Ubuntu,
+		"Helvetica Neue",
+		Helvetica,
+		Arial,
+		/*中文*/ "蘋方-繁",
+		"PingFang TC",
+		"黑體-繁",
+		"Heiti TC",
+		"微軟正黑體",
+		"Microsoft JhengHei",
+		"Noto Sans TC",
+		sans-serif;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: rgb(239, 236, 233);
+}
+
+ul {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: "";
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* 網頁初始設定 */
+a {
+	display: block;
+	text-decoration: none;
+}
+
+img {
+	display: block;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+small {
+	font-family:
+		Noto Sans TC,
+		Roboto;
+}
+
+//卷軸樣式
+/* This styles the scrollbar track */
+::-webkit-scrollbar {
+	width: 10px;
+	/* Adjust the width of the scrollbar */
+}
+
+/* This styles the scrollbar handle */
+::-webkit-scrollbar-thumb {
+	background: #dddddd;
+	/* Change the color of the scrollbar thumb */
+	border-radius: 5px;
+	/* Round the corners of the scrollbar thumb */
+}
+
+/* This styles the scrollbar track */
+::-webkit-scrollbar-track {
+	background: #fff;
+	/* Change the color of the scrollbar track */
+}
+
+:root {
+	/* 主色調 */
+	--major-color-pink: #caa2a1;
+	--major-color-light: #efece9;
+	--major-color-brown: #342014;
+
+	/* 輔助色調 */
+	--lesser-color-pink: #dcc1bd;
+	--lesser-color-brown: #7c6e67;
+	--lesser-color-yellow: #fff3e7;
+	--lesser-color-beige: #e2d5ce;
+
+	/* 灰階 */
+	--white: #fff;
+	--grey-FC: #fcfcfc;
+	--grey-EB: #ebebeb;
+	--grey-D9: #d9d9d9;
+	--darkGray: #7b7b7b;
+	--dark: #000;
+
+	/* 特殊色 */
+	--red: #dd7667;
+	--hue: 150;
+	--primary: hsl(var(--hue), 50%, 50%);
+	--dark-2: hsl(var(--hue), 25%, 10%);
+	--grey-2: hsl(0, 0%, 50%);
+}
+
+//按鈕
+%btn-pink {
+	display: inline-block;
+	text-decoration: none;
+	outline: none;
+	background-color: var(--lesser-color-pink);
+	color: var(--dark);
+	width: 200px;
+	height: 35px;
+	padding: 5px 45px;
+	margin: 20px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 30px;
+	border: none;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}

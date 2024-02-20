@@ -1,0 +1,326 @@
+@mixin custom-width($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+#dolls {
+  margin: 60px auto;
+
+  // 大框架圓角
+  .dolls-Box {
+    background-color: var(--major-color-brown);
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    border-radius: 50px;
+  }
+
+  /* 標題框架 */
+  .nowSale-Title,
+  .pastSale-Title,
+  .futureSale-Title {
+    width: 100%;
+    max-width: 1200px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    position: relative;
+    line-height: 1.5;
+    h4 {
+      font-size: 36px;
+      color: var(--major-color-light);
+      font-weight: bold;
+      @include custom-width(1000px) {
+        font-size: 30px;
+      }
+      @include custom-width(600px) {
+        font-size: 26px;
+      }
+    }
+    p {
+      font-size: 22px;
+      color: var(--major-color-light);
+      @include custom-width(600px) {
+        font-size: 18px;
+      }
+    }
+  }
+
+  /* 標題線 */
+  .nowSale-Title p::after,
+  .pastSale-Title p::after,
+  .futureSale-Title p::after {
+    content: "";
+    display: block;
+    width: 600px;
+    height: 3px;
+    position: absolute;
+    transform: translateX(-40%);
+    background-color: var(--major-color-light);
+    margin-top: 20px;
+    @include custom-width(1000px) {
+      width: 400px;
+      height: 2px;
+    }
+    @include custom-width(400px) {
+      width: 300px;
+      height: 1px;
+    }
+  }
+
+  /* 大框架 */
+  // web當期/準備/往期商品大框架
+  .nowSale,
+  .futureSale,
+  .pastSale {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+
+    @include custom-width(1024px) {
+      display: none;
+    }
+
+    /* 小框架 */
+    .nowSaleSML,
+    .futureSaleSML,
+    .pastSaleSML {
+      width: 100%;
+      max-width: 1200px;
+      height: 600px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        margin: 30px 0 30px 15px;
+        text-align: center;
+        width: auto;
+        height: auto;
+
+        .info-text {
+          h1 {
+            margin-top: 10px;
+            color: var(--major-color-light);
+            font-size: 20px;
+            margin-bottom: 10px;
+
+            @include custom-width(600px) {
+              font-size: 16px;
+            }
+          }
+
+          h2 {
+            font-size: 14px;
+            margin: 0;
+            color: var(--major-color-light);
+          }
+        }
+      }
+    }
+    // 翻牌效果
+    .flip-card-container {
+      width: 92%;
+      height: 80%;
+      margin: 4%;
+    }
+
+    /* 翻转卡片 */
+    .flip-card {
+      width: inherit;
+      height: inherit;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: 0.6s 0.1s;
+    }
+
+    /* 鼠标悬停和焦点状态 */
+    .flip-card-container:hover .flip-card,
+    .flip-card-container:focus-within .flip-card {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      width: 100%;
+      height: 100%;
+      border: 10px solid #fff;
+      border-radius: 24px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      object-fit: cover;
+      backface-visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-front {
+      transform: rotateY(0deg);
+      z-index: 2;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      z-index: 1;
+    }
+
+    figure {
+      z-index: -1;
+    }
+
+    figure,
+    .img-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    /* 按钮 */
+    button {
+      font-family: inherit;
+      font-weight: bold;
+      color: var(--major-color-brown);
+      letter-spacing: 2px;
+      padding: 9px 20px;
+      border: 3px solid var(--lesser-color-yellow);
+      background-color: var(--lesser-color-yellow);
+      border-radius: 1000px;
+      transition: 0.3s;
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        color: var(--lesser-color-yellow);
+        background: hsla(var(--hue), 25%, 10%, 0.2);
+        border-color: currentColor;
+      }
+
+      &:active {
+        transform: none;
+        scale: 0.95;
+      }
+    }
+
+    .dolls-btn {
+      width: 250px;
+      position: absolute;
+      bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      cursor: pointer;
+
+      img {
+        width: 28px;
+        height: 28px;
+
+        &:hover {
+          scale: 1.1;
+        }
+      }
+    }
+  }
+
+  // 手機板
+  .nowSale-phone,
+  .futureSale-phone,
+  .pastSale-phone {
+    display: none;
+    flex-direction: column;
+
+    @include custom-width(1024px) {
+      display: flex;
+    }
+
+    .phone-SML {
+      width: 100%;
+      max-width: 1200px;
+      height: auto;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      background-color: var(--major-color-brown);
+      border-radius: 50px;
+      .dollTopBox,
+      .dollBottomBox {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+      }
+
+      .thePhoneBox1,
+      .thePhoneBox2,
+      .thePhoneBox3,
+      .thePhoneBox4 {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 2%;
+        align-items: center;
+
+        img {
+          height: 42vh;
+          width: auto;
+          border: 5px solid var(--white);
+          border-radius: 40px;
+
+          @include custom-width(1024px) {
+            height: 52vh;
+          }
+
+          @include custom-width(900px) {
+            height: 36vh;
+          }
+
+          @include custom-width(700px) {
+            height: 30vh;
+          }
+
+          @include custom-width(568px) {
+            height: 24vh;
+          }
+        }
+        h1 {
+          color: var(--white);
+          margin-top: 10px;
+          height: 30px;
+          width: auto;
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+
+      .thePhoneBox1,
+      .thePhoneBox2,
+      .thePhoneBox3 {
+        a {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,630 @@
+@mixin custom-width($width) {
+    @media (max-width: $width) {
+        @content;
+    }
+}
+
+.ordersBox {
+    display: flex;
+    justify-content: center;
+    background-color: var(--major-color-light);
+    max-width: 1200px;
+    margin: auto;
+
+    @include custom-width(1024px) {
+        flex-direction: column;
+        height: auto;
+        width: auto;
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .orders-box1 {
+        position: relative;
+        display: block;
+        align-items: stretch;
+        width: 200px;
+        height: 550px;
+        margin: 20px;
+        flex-shrink: 0;
+        border-radius: 24px;
+        background: var(--white);
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+        @include custom-width(1024px) {
+            display: none;
+        }
+
+        //大頭貼
+        &-photo {
+            display: flex;
+            justify-content: center;
+            margin-top: 16px;
+
+            .ant-upload-picture-circle-wrapper {
+                display: flex;
+                justify-content: center;
+            }
+
+            img {
+                height: 100%;
+                border-radius: 50%;
+                stroke-width: 1px;
+                background-color: var(--white);
+                box-shadow: 0px 1px 2.9px rgba(0, 0, 0, 0.25);
+                object-fit: contain;
+            }
+        }
+
+        &-list_bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+                text-decoration: none;
+                color: inherit; /* 使用父元素的文字顏色，這樣點選後不會有顏色變化 */
+                font-size: 1rem;
+                font-weight: bold;
+            }
+
+            .orders_btn,
+            .collection_btn,
+            .account_btn,
+            .logOut_btn {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                position: relative;
+                width: 180px;
+                height: 50px;
+                margin-bottom: 25px;
+                cursor: pointer;
+            }
+
+            // 非本頁按鈕hover
+            .logOut_btn:hover,
+            .account_btn:hover,
+            .collection_btn:hover {
+                background-color: var(--lesser-color-pink);
+                border-radius: 16px;
+                color: var(--white);
+                text-shadow: 0px 1px 1.5px rgba(0, 0, 0, 0.3);
+            }
+
+            //登出按鈕
+            .logOut_btn {
+                position: absolute;
+                bottom: 0;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 180px;
+
+                &::before {
+                    content: ""; /* 偽元素用於顯示圖示 */
+                    background-image: url("../assets/icon/logOut-b.svg");
+                    background-repeat: no-repeat;
+                    background-size: 32px; /* 調整圖示大小 */
+                    width: 32px;
+                    height: 32px;
+                    position: absolute;
+                    left: 0;
+                    top: 50%; /* 圖示垂直置中 */
+                    transform: translateY(-50%) translateX(50%);
+                }
+
+                &:hover::before {
+                    content: ""; /* 偽元素用於顯示圖示 */
+                    background-image: url("../assets/icon/logOut-w.svg");
+                    background-repeat: no-repeat;
+                    background-size: 32px; /* 調整圖示大小 */
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+
+            // 追蹤清單按鈕
+            .collection_btn {
+                &::before {
+                    content: ""; /* 偽元素用於顯示圖示 */
+                    background-image: url("../assets/icon/icon-my-collection-b.svg");
+                    background-repeat: no-repeat;
+                    background-size: 28px; /* 調整圖示大小 */
+                    width: 28px;
+                    height: 28px;
+                    position: absolute;
+                    left: 0;
+                    top: 50%; /* 圖示垂直置中 */
+                    transform: translateY(-50%) translateX(50%);
+
+                    @include custom-width(650px) {
+                        display: none;
+                    }
+                }
+            }
+
+            .collection_btn:hover::before {
+                content: ""; /* 偽元素用於顯示圖示 */
+                background-image: url("../assets/icon/icon-my-collection-w.svg");
+                background-repeat: no-repeat;
+                background-size: 28px; /* 調整圖示大小 */
+                width: 28px;
+                height: 28px;
+            }
+
+            // 會員資料按鈕
+            .account_btn {
+                &::before {
+                    content: ""; /* 偽元素用於顯示圖示 */
+                    background-image: url("../assets/icon/icon-my-account-b.svg");
+                    background-repeat: no-repeat;
+                    background-size: 28px; /* 調整圖示大小 */
+                    width: 28px;
+                    height: 28px;
+                    position: absolute;
+                    left: 0;
+                    top: 50%; /* 圖示垂直置中 */
+                    transform: translateY(-50%) translateX(50%);
+
+                    @include custom-width(650px) {
+                        display: none;
+                    }
+                }
+            }
+            .account_btn:hover::before {
+                content: ""; /* 偽元素用於顯示圖示 */
+                background-image: url("../assets/icon/icon-my-account-w.svg");
+                background-repeat: no-repeat;
+                background-size: 28px; /* 調整圖示大小 */
+                width: 28px;
+                height: 28px;
+            }
+
+            //購買清單按鈕(本頁按鈕顯示)
+            .orders_btn {
+                width: 180px;
+                height: 50px;
+                background-color: var(--lesser-color-pink);
+                border-radius: 16px;
+                color: var(--white);
+                text-shadow: 0px 1px 1.5px rgba(0, 0, 0, 0.3);
+
+                &:hover {
+                    background-color: var(--lesser-color-brown);
+                }
+
+                &::before {
+                    content: ""; /* 偽元素用於顯示圖示 */
+                    background-image: url("../assets/icon/icon-cart-w.svg");
+                    background-repeat: no-repeat;
+                    background-size: 28px; /* 調整圖示大小 */
+                    width: 28px;
+                    height: 28px;
+                    position: absolute;
+                    left: 0;
+                    top: 50%; /* 圖示垂直置中 */
+                    transform: translateY(-50%) translateX(50%);
+
+                    @include custom-width(650px) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    //我的訂單列
+    .orders-box2 {
+        width: 1000px;
+        margin: 20px 0;
+
+        @include custom-width(1024px) {
+            width: auto;
+            height: auto;
+            padding: 0;
+            margin: 20px;
+        }
+
+        @include custom-width(768px) {
+            font-size: 14px;
+        }
+
+        @include custom-width(540px) {
+            font-size: 12px;
+        }
+
+        &-title {
+            border-radius: 12px 12px 0 0;
+            background-color: var(--lesser-color-pink);
+            padding: 15px;
+            font-weight: bold;
+            font-size: 16px;
+
+            @include custom-width(1024px) {
+                width: auto;
+            }
+        }
+
+        // 購買清單未展開欄位
+        &-table {
+            width: 1000px;
+            background-color: var(--white);
+
+            @include custom-width(1024px) {
+                height: auto;
+                width: 100%;
+            }
+
+            .head {
+                background-color: var(--grey-D9);
+                height: 30px;
+                line-height: 50px;
+                text-align: center;
+                vertical-align: middle;
+                font-weight: bold;
+
+                &-img-title {
+                    padding: 0 0 0 50px;
+                    width: 30%;
+                }
+                &-specifications {
+                    width: 20%;
+                }
+                &-Makeup {
+                    width: 15%;
+                }
+                &-price {
+                    width: 20%;
+                }
+                &-quantity {
+                    width: 15%;
+                }
+            }
+
+            .content {
+                height: 30px;
+
+                &-img {
+                    padding: 10px 20px;
+
+                    .prod-img {
+                        width: 80px;
+                        height: 90px;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+
+                            @include custom-width(568px) {
+                                width: 70%;
+                                height: 70%;
+                            }
+                        }
+                    }
+                }
+
+                td {
+                    line-height: 50px;
+                    text-align: center;
+                    vertical-align: middle;
+                }
+                &-name,
+                &-specifications,
+                &-Makeup,
+                &-price,
+                &-quantity {
+                    line-height: 50px;
+                    text-align: center;
+                }
+
+                &-img,
+                &-name {
+                    text-align: left;
+                }
+            }
+
+            .receiptInformation {
+                &-title {
+                    background-color: var(--grey-D9);
+                    padding: 10px 20px;
+                    font-weight: bold;
+                    text-align: left;
+                }
+
+                .info-wrap {
+                    border-bottom: 1px solid #aaa;
+                    padding: 10px 15px;
+
+                    &-message {
+                        display: flex;
+                        justify-content: space-between;
+                        width: 500px;
+                    }
+                }
+
+                &-content {
+                    font-weight: bold;
+                    text-align: center;
+                }
+
+                &-text {
+                    padding: 0 20px;
+                    width: 80%;
+                }
+
+                .padding-box {
+                    padding: 10px;
+                }
+            }
+        }
+
+        // 查看詳情展開欄位
+        &-thead {
+            max-width: 1000px;
+            text-align: left;
+            font-size: 16px;
+            background-color: var(--grey-D9);
+
+            .orders {
+                font-weight: bold;
+                width: auto;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                vertical-align: middle;
+
+                @include custom-width(768px) {
+                    font-size: 14px;
+                }
+            }
+
+            .text-center {
+                text-align: center;
+            }
+        }
+
+        //我的訂單列表
+        .order-list {
+            width: 1000px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            vertical-align: middle;
+
+            @include custom-width(1024px) {
+                height: auto;
+                width: 100%;
+            }
+
+            &-number {
+                width: 20%;
+            }
+            &-date {
+                width: 20%;
+            }
+            &-state {
+                width: 20%;
+            }
+            &-price {
+                width: 20%;
+            }
+            &-btn {
+                width: 20%;
+
+                @include custom-width(568px) {
+                    display: none;
+                }
+
+                button {
+                    background-color: var(--lesser-color-pink);
+                    border: none;
+                    border-radius: 20px;
+                    padding: 5px 20px;
+                    font-weight: bold;
+                    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+                    cursor: pointer;
+                }
+                button:hover {
+                    scale: 0.95;
+                }
+            }
+            &-btn-phone {
+                display: none;
+
+                @include custom-width(568px) {
+                    display: flex;
+                }
+
+                button {
+                    background-color: var(--lesser-color-pink);
+                    border: none;
+                    border-radius: 20px;
+                    padding: 5px 20px;
+                    font-weight: bold;
+                    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+                }
+                button:hover {
+                    scale: 0.95;
+                }
+            }
+        }
+
+        /*流程表*/
+        .progressBar1 {
+            position: relative;
+            max-width: 850px;
+            margin: 20px auto;
+            margin-bottom: 30px;
+            padding: 0 15px 30px 15px;
+            width: 1200px;
+
+            @include custom-width(1024px) {
+                height: auto;
+                width: 100%;
+            }
+
+            @include custom-width(540px) {
+                height: auto;
+                width: 85%;
+                right: 20px;
+            }
+
+            @include custom-width(500px) {
+                height: auto;
+                width: 80%;
+                right: 60px;
+            }
+
+            .process-line {
+                border-bottom: 1px solid var(--darkGray);
+                bottom: 65px;
+                margin: auto;
+                max-width: 95%;
+                position: relative;
+                display: flex;
+
+                @include custom-width(1024px) {
+                    max-width: 90%;
+                }
+
+                @include custom-width(540px) {
+                    height: auto;
+                    left: 20px;
+                }
+            }
+
+            ul {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                @include custom-width(768px) {
+                    font-size: 14px;
+                }
+
+                @include custom-width(568px) {
+                    font-size: 12px;
+                }
+
+                li {
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 10;
+                    line-height: 1.2;
+
+                    .no {
+                        color: var(--dark);
+                        background: var(--grey-D9);
+                        border-radius: 50%;
+                        width: 45px;
+                        height: 45px;
+                        font-weight: bold;
+                        text-align: center;
+                    }
+
+                    .no3 {
+                        color: var(--white);
+                        background: var(--lesser-color-pink);
+                        border-radius: 50%;
+                        width: 45px;
+                        height: 45px;
+                        font-weight: bold;
+                        text-align: center;
+                    }
+
+                    .text {
+                        position: relative;
+                        bottom: -13px;
+                    }
+
+                    .step-name {
+                        width: 80px;
+                        text-align: center;
+                        font-weight: bold;
+                    }
+
+                    .step-time {
+                        text-align: center;
+                        margin-top: 5px;
+                        color: var(--darkGray);
+                    }
+                }
+            }
+        }
+    }
+
+    // 手機板頁面切換選單
+    .orders-box1-phone {
+        display: none;
+
+        @include custom-width(1024px) {
+            display: flex;
+            flex-direction: column;
+        }
+
+        // 大頭貼&登出
+        .orders-box1-photo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            width: auto;
+
+            .logOut_btn {
+                color: inherit;
+                font-size: 1rem;
+                font-weight: bold;
+                cursor: pointer;
+
+                &:hover {
+                    color: var(--lesser-color-brown);
+                }
+            }
+        }
+
+        // 選單
+        .orders-box1-list_bar {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background: var(--white);
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            width: auto;
+            height: auto;
+            margin: 0 20px;
+            border-radius: 50px;
+
+            .orders_btn,
+            .collection_btn,
+            .account_btn {
+                margin-bottom: 0;
+                margin: 10px;
+                @include custom-width(650px) {
+                    width: 100px;
+                    margin: 6px;
+                    border-radius: 50px;
+                  }
+                @include custom-width(450px) {
+                    width: 86px;
+                    margin: 6px;
+                    border-radius: 50px;
+                  }
+            }
+        }
+    }
+}
